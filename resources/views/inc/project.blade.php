@@ -4,10 +4,10 @@
             <div class="col-xl-8 text-center">
                 <div class="section-header mb-65">
                     <h4 class="sub-heading sub-heading__2 mb-15">
-                        <span><img src="{{ url('assets/images/shape/heading-shape-3.png') }}" class="mr-5"
+                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-3.png') }}" class="mr-5"
                                 alt=""></span>
                         {{ trans('message.project') }}
-                        <span><img src="{{ url('assets/images/shape/heading-shape-4.png"') }} class=" ml-5"
+                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-4.png"') }} class=" ml-5"
                                 alt=""></span>
                     </h4>
                     <h2 class="section-title section-title__2">{{ trans('message.our_projects') }}</h2>
