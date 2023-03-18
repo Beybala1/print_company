@@ -31,18 +31,20 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
-    Route::get('/',[HomeController::class, 'index'])->name('home');
-    Route::get('/service',[ServiceController::class, 'index'])->name('service');
-    Route::get('/project',[ProjectController::class, 'index'])->name('project');
-    Route::get('/project/{slug}',[ProjectController::class, 'show'])->name('project.show');
-    Route::get('/about',[AboutController::class, 'index'])->name('about');
-    Route::get('/contact',[ContactController::class, 'index'])->name('contact');
-    Route::post('/contact',[ContactController::class, 'store'])->name('message');
-    Route::get('/faq',[FaqController::class, 'index'])->name('faq');
-    Route::get('/product',[ProductController::class, 'index'])->name('product');
-    Route::get('/product/{slug}',[ProductController::class, 'show'])->name('show');
-    Route::get('/news/{slug}',[NewsController::class, 'show'])->name('news.show');
+Route::group([
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ],
+    'prefix' => LaravelLocalization::setLocale()], function(){
+        Route::get('/',[HomeController::class, 'index'])->name('home');
+        Route::get('/service',[ServiceController::class, 'index'])->name('service');
+        Route::get('/project',[ProjectController::class, 'index'])->name('project');
+        Route::get('/project/{slug}',[ProjectController::class, 'show'])->name('project.show');
+        Route::get('/about',[AboutController::class, 'index'])->name('about');
+        Route::get('/contact',[ContactController::class, 'index'])->name('contact');
+        Route::post('/contact',[ContactController::class, 'store'])->name('message');
+        Route::get('/faq',[FaqController::class, 'index'])->name('faq');
+        Route::get('/product',[ProductController::class, 'index'])->name('product');
+        Route::get('/product/{slug}',[ProductController::class, 'show'])->name('show');
+        Route::get('/news/{slug}',[NewsController::class, 'show'])->name('news.show');
 });
 
 Route::middleware([/* 'isAdmin','auth' */])->prefix('admin')->group(function () {
