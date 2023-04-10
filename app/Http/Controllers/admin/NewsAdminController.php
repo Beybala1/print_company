@@ -24,6 +24,7 @@ class NewsAdminController extends Controller
      */
     public function create()
     {
+        publisher_abort();
         return view('backend.create.news_create');
     }
 
@@ -61,6 +62,7 @@ class NewsAdminController extends Controller
      */
     public function edit(News $news)
     {
+        editor_abort();
         try {
             return view('backend.update.news_update',get_defined_vars());
         } catch (\Exception $e) {
@@ -101,6 +103,7 @@ class NewsAdminController extends Controller
      */
     public function destroy(News $news)
     {
+        destroyer_abort();
         try {
             File::delete($news->image);
             $news->delete();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubProduct;
 use Illuminate\Http\Request;
@@ -17,36 +18,30 @@ class ProductAdminController extends Controller
      */
     public function index()
     {
-        $products = Product::whereNull('product_id')->latest()->get();
+        $products = Product::with('category')
+            ->latest()
+            ->get();
         return view('backend.product',get_defined_vars());
     }
-    
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        return view('backend.create.product_create');
-    }
-
-    public function createSubProduct($id)
-    {
+        $categories = Category::latest()
+            ->get();
         return view('backend.create.product_create',get_defined_vars());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreProductRequest $request)
     {
         try {
+            $request->validated();
             $file = time().'.'.$request->image->extension();
             $request->image->storeAS('public/uploads/images/',$file);
             $image = 'storage/uploads/images/'.$file;
           
             Product::create([
                 'title'=>$request->title,
-                'product_id'=>$request->product_id,
+                'category_id'=>$request->category_id,
                 'description_1'=>$request->description_1,
                 'description_2'=>$request->description_2,
                 'description_3'=>$request->description_3,
@@ -56,21 +51,6 @@ class ProductAdminController extends Controller
             ]);
             
             return redirect(route('product.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
-        } catch (\Exception $e) {
-            return back()->with('errors', 'Əməliyyat uğursuz oldu');
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        try {
-            $product = Product::findOrFail($id);
-            $products = Product::where('product_id', $id)->latest()->get();
-            /* $products = SubProduct::where('product_id', $id)->latest()->get(); */
-            return view('backend.alt.product',get_defined_vars());
         } catch (\Exception $e) {
             return back()->with('errors', 'Əməliyyat uğursuz oldu');
         }

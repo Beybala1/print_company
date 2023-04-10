@@ -6,10 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSliderRequest;
 use App\Http\Requests\UpdateSliderRequest;
 use App\Models\Slider;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use RealRashid\SweetAlert\Facades\Alert;
-
 
 class SliderAdminController extends Controller
 {
@@ -17,7 +14,7 @@ class SliderAdminController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         $sliders = Slider::latest()->get();
         return view('backend.slider',get_defined_vars());
     }
@@ -26,6 +23,7 @@ class SliderAdminController extends Controller
      */
     public function create()
     {
+        publisher_abort();
         return view('backend.create.slider_create');
     }
 
@@ -63,6 +61,7 @@ class SliderAdminController extends Controller
      */
     public function edit(string $id)
     {
+        editor_abort();
         try {
             $slider_edit = Slider::find($id);
             return view('backend.update.slider_update',get_defined_vars());
@@ -104,6 +103,7 @@ class SliderAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        destroyer_abort();
         try {
             $slider = Slider::find($id);
             File::delete($slider->image);

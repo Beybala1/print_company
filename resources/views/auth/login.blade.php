@@ -43,22 +43,20 @@
                         @endif
                         <form id="main_form" class="mb-3" action="{{ route('login') }}" method="POST">
                             @csrf
-
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="admin@gmail.com{{-- {{old('email')}} --}}"
+                                <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}"
                                     placeholder="Emailinizi daxil edin" required/>
                             </div>
 
                             <div class="mb-3 form-password-toggle">
                                 <label class="form-label" for="password">Parol</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" name="password" value="admin1"
+                                    <input type="password" id="password" class="form-control" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                         aria-describedby="password" required/>
                                 </div>
                             </div>
-                            
                             <div class="row mb-3">
                                 <div>
                                     <div class="form-check">
@@ -72,13 +70,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary d-grid w-100">Daxil ol</button>
                         </form>
-
-                        <p class="text-center">
-                            <span>Hesab yarat.</span>
-                            <a href="{{ route('register') }}">
-                                <span>Qeydiyyat</span>
-                            </a>
-                        </p>
                     </div>
                 </div>
             </div>

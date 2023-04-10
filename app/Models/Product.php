@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-
 class Product extends Model
 {
     use HasFactory;
@@ -16,6 +15,7 @@ class Product extends Model
         'image', 
         'slug',
         'product_id',
+        'category_id',
         'description_1', 
         'description_2',
         'description_3',
@@ -23,9 +23,9 @@ class Product extends Model
         'description_5',
     ];
 
-    public function subproducts()
+    public function category()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Category::class);
     }
 
     protected static function boot() {

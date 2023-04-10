@@ -24,6 +24,7 @@ class ServiceAdminController extends Controller
      */
     public function create()
     {
+        publisher_abort();
         return view('backend.create.service_create');
     }
 
@@ -66,6 +67,7 @@ class ServiceAdminController extends Controller
      */
     public function edit(string $id)
     {
+        editor_abort();
         try {
             $service_edit = Service::find($id);
             return view('backend.update.service_update',get_defined_vars());
@@ -107,6 +109,7 @@ class ServiceAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        destroyer_abort();
         try {
             $service = Service::find($id);
             File::delete($service->image);

@@ -24,6 +24,8 @@ class ProjectAdminController extends Controller
      */
     public function create()
     {
+        //Helper(app/helpers.php)
+        publisher_abort();
         return view('backend.create.project_create');
     }
 
@@ -62,6 +64,7 @@ class ProjectAdminController extends Controller
      */
     public function edit(string $id)
     {
+        editor_abort();
         try {
             $project_edit = Project::find($id);
             return view('backend.update.project_update',get_defined_vars());
@@ -103,6 +106,7 @@ class ProjectAdminController extends Controller
      */
     public function destroy(string $id)
     {
+       destroyer_abort();
         try {
             $project = Project::find($id);
             File::delete($project->image);

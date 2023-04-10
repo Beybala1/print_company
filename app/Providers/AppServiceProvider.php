@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Product;
+use App\Models\Social;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -25,10 +27,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         $contact = Contact::first();
-        $subproducts = Product::whereNUll('product_id')->latest()->get();
+        $socials = Social::get();
+        $categories = Category::with('products')->get();
         View::share([
+            'categories' => $categories,
+            'socials'=>$socials,
             'contact'=>$contact,
-            'subproducts'=>$subproducts,
         ]);
     }
 }

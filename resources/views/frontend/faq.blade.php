@@ -1,15 +1,18 @@
 @extends('layouts.app_front')
 
 @section('content')
+@section('title')
+    {{ trans('message.faq') }}
+@endsection
 <section class="faq-area faq-area__2 pt-80 pb-80">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 text-center">
                 <div class="section-header mb-75">
                     <h4 class="sub-heading sub-heading__2 mb-15">
-                        <span><img src="assets/images/shape/heading-shape-3.png" class="mr-5" alt=""></span>
+                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-3.png') }}" class="mr-5" alt="image"></span>
                         {{ trans('message.common_questions') }}
-                        <span><img src="assets/images/shape/heading-shape-4.png" class="ml-5" alt=""></span>
+                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-4.png') }}" class="ml-5" alt="image"></span>
                     </h4>
                     <h2 class="section-title section-title__2">{{ trans('message.questions') }}</h2>
                 </div>

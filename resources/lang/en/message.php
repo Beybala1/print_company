@@ -33,4 +33,8 @@ return [
     'other_products'=>'Other products',
     'succcess'=>'Message sent successfully',
     'error'=>'Something went wrong',
+    'news'=>'News',
+    'project_name'=>'Project',
+    'project_description'=>'Description',
+    'other_news'=>'Other news',
 ];

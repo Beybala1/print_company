@@ -15,7 +15,9 @@
                 <th>Mövzu</th>
                 <th>Açıqlama</th>
                 <th>Tarix</th>
-                <th>Əməliyyatlar</th>
+                @role('destroyer')
+                    <th>Əməliyyatlar</th>
+                @endrole
             </tr>
         </thead>
         <tbody>
@@ -27,16 +29,18 @@
                 <td>{{ $message->subject }}</td>
                 <td>{{ mb_substr($message->description,0,55)."..." }}</td>
                 <td>{{ $message->created_at }}</td>
-                <td>
-                    <form action="{{ route('message.destroy',[$message->id]) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <div class="btn-group">
-                            <a href="{{ route('message.show',[$message->id]) }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </form>
-                </td>
+                @role('destroyer')
+                    <td>
+                        <form action="{{ route('message.destroy',[$message->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="btn-group">
+                                <a href="{{ route('message.show',[$message->id]) }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </form>
+                    </td>
+                @endrole
             </tr>
             @endforeach
         </tbody>

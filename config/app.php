@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'az',
 
     'locales'=> [
         'az',
@@ -189,8 +189,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-
-        
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

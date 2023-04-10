@@ -15,7 +15,7 @@
             <form action="{{ route('product.update',[$product_edit->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <img width="985" height="350" class="mb-3" src="{{ url($product_edit->image) }}">
+                <img width="100%" height="350" class="mb-3" src="{{ url($product_edit->image) }}">
                 <div class="input-group">
                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Yüklə</label>

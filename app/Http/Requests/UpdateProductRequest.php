@@ -24,10 +24,6 @@ class UpdateProductRequest extends FormRequest
         return [
             'title'=>'required|string|max:255',
             'description_1'=>'required|string',
-            'description_2'=>'string',
-            'description_3'=>'string',
-            'description_4'=>'string',
-            'description_5'=>'string',
             'image'=>'image|mimes:jpeg,png,jpg,gif',
         ];
     }

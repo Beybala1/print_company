@@ -13,7 +13,7 @@
             <h5 class="mb-0">Alt Məhsul əlavə et</h5>
         </div>
         <div class="card-body">
-        <form action="{{ route('sub_product.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('subProduct.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <div class="input-group">
@@ -57,7 +57,7 @@
             
             <div class="pt-4">
                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Daxil et</button>
-                <a href="{{ route('sub_product.index') }}" class="btn btn-label-secondary">Ləğv et</a>
+                <a href="{{ route('product.show',[$product->id]) }}" class="btn btn-label-secondary">Ləğv et</a>
             </div>
         </form>
     </div>

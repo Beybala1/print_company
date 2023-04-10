@@ -6,8 +6,10 @@
 @endsection
 <div class="table-responsive">    
     <h1>Slider cədvəli</h1>
-    <a href="{{ route('slider.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
-      <table id="example" class="table" style="width:100%">
+    @role('publisher')
+        <a href="{{ route('slider.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+    @endrole
+    <table id="example" class="table" style="width:100%">
         <thead>
             <tr>
                 <th>#</th>
@@ -15,7 +17,9 @@
                 <th>Başlıq</th>
                 <th>Açıqlama</th>
                 <th>Tarix</th>
-                <th>Əməliyyatlar</th>
+                @role('editor|destroyer')
+                    <th>Əməliyyatlar</th>
+                @endrole
             </tr>
         </thead>
         <tbody>
@@ -24,18 +28,22 @@
                 <td>{{ $i+=1}}</td>
                 <td><img style="width: 60px; height:60px;" src="{{ url($slider->image) }}"></td>
                 <td>{{ $slider->title }}</td>
-                <td v-html>{{ mb_substr($slider->description,0,55)."..." }}</td>
+                <td>{{ mb_substr($slider->description,0,55)."..." }}</td>
                 <td>{{ $slider->created_at }}</td>
-                <td>
-                    <form action="{{ route('slider.destroy',[$slider->id]) }}" method="post">
-                        @csrf
-                        @method('DELETE')
+                @role('editor')
+                    <td>
                         <div class="btn-group">
-                            <a href="{{ route('slider.edit',[$slider->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <form action="{{ route('slider.destroy',[$slider->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{ route('slider.edit',[$slider->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                @role('destroyer')
+                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                @endrole
+                            </form>
                         </div>
-                    </form>
-                </td>
+                    </td>
+                @endrole
             </tr>
             @endforeach
         </tbody>

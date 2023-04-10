@@ -2041,9 +2041,6 @@ h6 {
   }
 }
 
-.mainmenu {
-  padding-left: 83px;
-}
 @media (max-width: 1530px) {
   .mainmenu {
     padding-left: 50px;
@@ -5710,7 +5707,7 @@ input.form-control-sm {
 }
 .faq-area::after {
   background: #F7F7F7;
-  width: 80%;
+  width: 100%;
   height: 100%;
   content: "";
   position: absolute;

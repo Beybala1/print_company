@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Faq;
 use App\Models\News;
@@ -18,11 +19,11 @@ class HomeController extends Controller
     {
         $sliders = Slider::latest()->get();
         $services = Service::latest()->get();
-        $projects = Project::latest()->get();
-        $products = Product::whereNull('product_id')->latest()->paginate(6);
+        $projects = Project::latest()->paginate(6);
+        $products_page = Product::latest()
+            ->paginate(6);
         $faqs = Faq::latest()->get();
-        $news = News::latest()->get();
-        $contact = Contact::first();
+        $news = News::latest()->paginate(6);
         $about = About::first();
         return view('frontend.home',get_defined_vars());
     }

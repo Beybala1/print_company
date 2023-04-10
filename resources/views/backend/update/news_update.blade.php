@@ -15,7 +15,7 @@
             <form action="{{ route('news.update',[$news->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <img width="985" height="350" class="mb-3" src="{{ url($news->image) }}">
+                <img width="100%" height="350" class="mb-3" src="{{ url($news->image) }}">
                 <div class="mb-3">
                     <label class="form-label" for="basic-default-fullname">Başlıq</label>
                     <input type="text" name="title" value="{{ $news->title }}" class="form-control" id="basic-default-fullname"

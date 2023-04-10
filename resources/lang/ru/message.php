@@ -33,4 +33,8 @@ return [
     'other_products'=>'Другие продукты',
     'succcess'=>'Сообщение успешно отправлено',
     'error'=>'Что-то пошло не так',
+    'news'=>'Новости',
+    'project_name'=>'Проекты',
+    'project_description'=>'Описание',
+    'other_news'=>'Другие новости',
 ];

@@ -2,13 +2,20 @@
 
 @section('content')
 
+@section('title')
+    {{ trans('message.home') }}
+@endsection
+
+@section('description')
+    Çap servisləri və çap avadanlıqları
+@endsection
 <section class="hero owl-carousel">
     @forelse ($sliders as $slider)
     <div class="hero__item">
         <div class="container-fluid p-0">
             <div class="row no-gutters">
-                <div class="col-xl-6 col-lg-7">
-                    <div class="hero__content">
+                <div class="col-xl-5 col-lg-7">
+                    <div class="hero__content">`
                         <h2 class="hero__title" data-animation="fadeIn" data-delay=".2s" data-duration=".5s">
                             {{ $slider->title }}
                         </h2>
@@ -27,7 +34,7 @@
             </div>
         </div>
         <div class="hero__image d-flex align-self-stretch p-3">
-            <img src="{{ url($slider->image) }}" alt="image">
+            <img src="{{ url($slider->image) }}" alt="{{ $slider->title }}">
         </div>
     </div>
     @empty
@@ -41,15 +48,21 @@
 @include('inc.product')
 
 <!-- news section start -->
+
 <section class="news-area grey-bg pt-120 pb-120">
     <div class="container">
+        <div class="col-xl-12 text-center">
+            <div class="section-header mb-65">
+                <h2 class="section-title section-title__2">{{ trans('message.news') }}</h2>
+            </div>
+        </div>
         <div class="row mt-none-30">
             @foreach ($news as $new)
             <div class="col-xl-4 col-lg-6 mt-30">
                 <article class="post-box">
                     <div class="post-box__thumb">
                         <a href="{{ route('news.show',[$new->slug]) }}">
-                            <img style="height:300px;" src="{{ url($new->image) }}" alt="image">
+                            <img style="height:300px;" src="{{ url($new->image) }}" alt="{{ $slider->title }}">
                         </a>
                         <span class="post-box__cat">Xəbər</span>
                     </div>
@@ -67,6 +80,7 @@
             </div>
             @endforeach
         </div>
+        <div class="d-flex justify-content-center mt-3">{{ $news->links() }}</div>
     </div>
 </section>
 <!-- news section end -->
@@ -106,7 +120,7 @@
                     @forelse ($faqs as $key => $faq)
                     <div class="card">
                         <div class="card__header" id="heading_{{ $key }}">
-                            <h5 class="mb-0 title">
+                            <h5 class="mb-0 title ml-3">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                     data-target="#collapse_{{ $key }}" aria-expanded="false"
                                     aria-controls="collapse_{{ $key }}">
@@ -116,7 +130,7 @@
                         </div>
                         <div id="collapse_{{ $key }}" class="collapse" aria-labelledby="heading_{{ $key }}"
                             data-parent="#accordionFaq">
-                            <div class="card__body">
+                            <div class="card__body ml-3">
                                 <p>
                                     {{ $faq->description }}
                                 </p>
@@ -130,44 +144,11 @@
             </div>
             <div class="col-xl-6">
                 <div class="faq-bg">
-                    <img src="frontend/assets/images/bg/faq-bg-1.jpg" alt="">
+                    <img src="frontend/assets/images/bg/faq-bg-1.jpg" alt="image">
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- faq section end -->
-
-<!-- brand section start -->
-<div class="brand-section pt-125 pb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="brand-carousel owl-carousel">
-                    <div class="brand-carousel__item">
-                        <img class="default" src="frontend/assets/images/brand/brand-1.png" alt="">
-                        <img class="hover" src="frontend/assets/images/brand/brand-1-h.png" alt="">
-                    </div>
-                    <div class="brand-carousel__item">
-                        <img class="default" src="frontend/assets/images/brand/brand-2.png" alt="">
-                        <img class="hover" src="frontend/assets/images/brand/brand-2-h.png" alt="">
-                    </div>
-                    <div class="brand-carousel__item">
-                        <img class="default" src="frontend/assets/images/brand/brand-3.png" alt="">
-                        <img class="hover" src="frontend/assets/images/brand/brand-3-h.png" alt="">
-                    </div>
-                    <div class="brand-carousel__item">
-                        <img class="default" src="frontend/assets/images/brand/brand-4.png" alt="">
-                        <img class="hover" src="frontend/assets/images/brand/brand-4-h.png" alt="">
-                    </div>
-                    <div class="brand-carousel__item">
-                        <img class="default" src="frontend/assets/images/brand/brand-5.png" alt="">
-                        <img class="hover" src="frontend/assets/images/brand/brand-5-h.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- brand section end -->
 @endsection

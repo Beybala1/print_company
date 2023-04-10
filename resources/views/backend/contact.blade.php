@@ -6,7 +6,9 @@
 @endsection
 <div class="table-responsive">    
     <h1>Əlaqə məlumatları</h1>
-    <a href="{{ route('contact.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+    @role('publisher')
+        <a href="{{ route('contact.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+    @endrole
       <table id="example" class="table" style="width:100%">
         <thead>
             <tr>
@@ -17,7 +19,9 @@
                 <th>Məkan-1</th>
                 <th>Məkan-2</th>
                 <th>Tarix</th>
-                <th>Əməliyyatlar</th>
+                @role('editor|destroyer')
+                    <th>Əməliyyatlar</th>
+                @endrole
             </tr>
         </thead>
         <tbody>
@@ -30,16 +34,20 @@
                 <td>{{ $contact->place_1 }}</td>
                 <td>{{ $contact->place_2 }}</td>
                 <td>{{ $contact->created_at }}</td>
-                <td>
-                    <form action="{{ route('contact.destroy',[$contact->id]) }}" method="post">
-                        @csrf
-                        @method('DELETE')
+                @role('editor')
+                    <td>
                         <div class="btn-group">
+                            <form action="{{ route('contact.destroy',[$contact->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
                             <a href="{{ route('contact.edit',[$contact->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                @role('destroyer')
+                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                @endrole
+                            </form>
                         </div>
-                    </form>
-                </td>
+                    </td>
+                @endrole
             </tr>
             @endforeach
         </tbody>

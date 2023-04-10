@@ -6,7 +6,9 @@
 @endsection
 <div class="table-responsive">    
     <h1>Servis cədvəli</h1>
-    <a href="{{ route('service.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+    @role('publisher')
+        <a href="{{ route('service.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+    @endrole
       <table id="example" class="table" style="width:100%">
         <thead>
             <tr>
@@ -15,7 +17,9 @@
                 <th>Başlıq</th>
                 <th>Açıqlama</th>
                 <th>Tarix</th>
-                <th>Əməliyyatlar</th>
+                @role('editor|destroyer')
+                    <th>Əməliyyatlar</th>
+                @endrole
             </tr>
         </thead>
         <tbody>
@@ -26,16 +30,20 @@
                 <td>{{ $service->title }}</td>
                 <td>{{ mb_substr($service->description,0,55)."..." }}</td>
                 <td>{{ $service->created_at }}</td>
+                @role('editor')
                 <td>
-                    <form action="{{ route('service.destroy',[$service->id]) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <div class="btn-group">
+                    <div class="btn-group">
+                        <form action="{{ route('service.destroy',[$service->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
                             <a href="{{ route('service.edit',[$service->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                            @role('destroyer')
                             <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </form>
+                            @endrole
+                        </form>
+                    </div>
                 </td>
+                @endrole
             </tr>
             @endforeach
         </tbody>

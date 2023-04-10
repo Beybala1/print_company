@@ -23,6 +23,8 @@ class AboutAdminController extends Controller
      */
     public function create()
     {
+        //Helper(app/helpers.php)
+        publisher_abort();
         return view('backend.create.about_create');
     }
 
@@ -65,6 +67,7 @@ class AboutAdminController extends Controller
      */
     public function edit(string $id)
     {
+        editor_abort();
         try {
             $about_edit = About::find($id);
             return view('backend.update.about_update',get_defined_vars());
@@ -106,6 +109,7 @@ class AboutAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        destroyer_abort();
         try {
             $about = About::find($id);
             File::delete($about->image);

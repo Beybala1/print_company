@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Support\Facades\Request;
 
 class ProductController extends Controller
 {
@@ -12,17 +13,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::whereNull('product_id')->latest()->get();
-        return view('frontend.product',get_defined_vars());
+        return view('frontend.product');
     }
 
-    /** 
-     * Display the specified resource.
-     */
     public function show($slug)
     {
-        $products = Product::latest()->paginate(6);
-        $product = Product::where('slug', $slug)->firstOrFail();
-        return view('frontend.show.product',get_defined_vars());
+        $products_page = Product::latest()
+            ->paginate(6);
+        $product = Product::where('slug', $slug)
+            ->firstOrFail();
+        return view('frontend.show.product', get_defined_vars());
     }
+
 }

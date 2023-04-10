@@ -33,4 +33,8 @@ return [
     'other_products'=>'Digər məhsullar',
     'succcess'=>'Mesaj uğurla göndərildi',
     'error'=>'Nə isə səhv getdi',
+    'news'=>'Xəbərlər',
+    'project_name'=>'Proyekt',
+    'project_description'=>'Məzmun',
+    'other_news'=>'Digər xəbələr',
 ];

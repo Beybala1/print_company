@@ -23,6 +23,7 @@ class FaqAdminController extends Controller
      */
     public function create()
     {
+        publisher_abort();
         return view('backend.create.faq_create');
     }
 
@@ -52,6 +53,7 @@ class FaqAdminController extends Controller
      */
     public function edit(string $id)
     {
+        editor_abort();
         try {
             $faq_edit = Faq::find($id);
             return view('backend.update.faq_update',get_defined_vars());
@@ -78,6 +80,7 @@ class FaqAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        destroyer_abort();
         try {
             Faq::find($id)->delete();
             return redirect(route('faq.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');

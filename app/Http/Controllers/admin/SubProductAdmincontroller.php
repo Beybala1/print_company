@@ -12,59 +12,63 @@ use Illuminate\Support\Facades\File;
 
 class SubProductAdmincontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function createSubProduct($id)
     {
-        //
-    }
+        $product = Product::findOrFail($id);
+        return view('backend.create.sub_product_create',get_defined_vars());
+    } 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create($id)
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreSubProductRequest $request, Product $product)
     {
-        //
+        try {
+            $request->validated();
+            $file = time().'.'.$request->image->extension();
+            $request->image->storeAS('public/uploads/images/',$file);
+            $image = 'storage/uploads/images/'.$file;
+          
+            Product::create([
+                'title'=>$request->title,
+                'product_id'=>$request->product_id,
+                'description_1'=>$request->description_1,
+                'description_2'=>$request->description_2,
+                'description_3'=>$request->description_3,
+                'description_4'=>$request->description_4,
+                'description_5'=>$request->description_5,
+                'image'=>$image,
+            ]);
+            
+            return redirect(route('product.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
+        } catch (\Exception $e) {
+            return back()->with('errors', 'Əməliyyat uğursuz oldu');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-       //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SubProduct $subProduct)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateSubProductRequest $request, SubProduct $subProduct)
     {
-       //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SubProduct $subProduct)
-    {
-       //
+        try {
+            $request->validated();
+            if ($request->hasFile('image')) {
+                $file = time().'.'.$request->image->extension();
+                $request->image->storeAS('public/uploads/images/',$file);
+                $image = 'storage/uploads/images/'.$file;
+                File::delete($subProduct->image);
+            }
+            else{
+                $image = $subProduct->image;
+            }
+            $subProduct->update([
+                'title'=>$request->title,
+                'description_1'=>$request->description_1,
+                'description_2'=>$request->description_2,
+                'description_3'=>$request->description_3,
+                'description_4'=>$request->description_4,
+                'description_5'=>$request->description_5,
+                'image'=>$image,
+            ]);
+           
+            return redirect(route('sub_product.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
+        } catch (\Exception $e) {
+            return back()->with('errors', 'Əməliyyat uğursuz oldu');
+        }
     }
 }

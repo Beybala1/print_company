@@ -32,6 +32,7 @@ class MessageAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        destroyer_abort();
         try {
             Message::find($id)->delete();
             return redirect(route('message.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');

@@ -10,13 +10,13 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::latest()->get();
+        $projects = Project::latest()->paginate(6);
         return view('frontend.project',get_defined_vars());
     }
 
     public function show($slug)
     {
-        $projects = Project::latest()->paginate(10);
+        $projects = Project::latest()->paginate(6);
         $project = Project::where('slug', $slug)->firstOrFail();
         return view('frontend.show.project',get_defined_vars());
     }

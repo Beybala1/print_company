@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminCheck
@@ -13,12 +14,12 @@ class AdminCheck
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle($request, Closure $next): Response
     {
-        if (auth()->user()->role == 1){
-            return $next($request);
-        } else {
-            return redirect('/');
+        if (Auth::user()->role != 1) {
+            abort(403);
         }
+
+        return $next($request);
     }
 }

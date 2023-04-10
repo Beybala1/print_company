@@ -23,6 +23,8 @@ class ContactAdminController extends Controller
      */
     public function create()
     {
+        //Helper(app/helpers.php)
+        publisher_abort();
         return view('backend.create.contact_create');
     }
 
@@ -60,6 +62,7 @@ class ContactAdminController extends Controller
      */
     public function edit(string $id)
     {
+        editor_abort();
         try {
             $contact_edit = Contact::find($id);
             return view('backend.update.contact_update',get_defined_vars());
@@ -94,6 +97,7 @@ class ContactAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        destroyer_abort();
         try {
             Contact::find($id)->delete();
             return redirect(route('contact.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');

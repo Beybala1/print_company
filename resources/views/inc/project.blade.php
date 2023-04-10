@@ -1,14 +1,28 @@
+@section('title')
+    {{ trans('message.project') }}
+@endsection
+
+@section('description')
+    {{ 'Proyektlərimiz' }}
+@endsection
+
 <div class="project-area project-area__2 pt-125 mb-3 pt-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8 text-center">
                 <div class="section-header mb-65">
                     <h4 class="sub-heading sub-heading__2 mb-15">
-                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-3.png') }}" class="mr-5"
-                                alt=""></span>
+                        <span>
+                            <img src="{{ url('frontend/assets/images/shape/heading-shape-3.png') }}" 
+                            class="mr-5"
+                            alt="image">
+                        </span>
                         {{ trans('message.project') }}
-                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-4.png"') }} class=" ml-5"
-                                alt=""></span>
+                        <span>
+                            <img src="{{ url('frontend/assets/images/shape/heading-shape-4.png') }}" 
+                            class="ml-5"
+                            alt="image">
+                        </span>
                     </h4>
                     <h2 class="section-title section-title__2">{{ trans('message.our_projects') }}</h2>
                 </div>
@@ -21,7 +35,7 @@
             <div class="col-xl-4 col-lg-6 col-md-6 d-flex mt-30">
                 <div class="project-item">
                     <div class="project-item__thumb project-item__thumb--big">
-                        <img src="{{ url($project->image) }}" alt="image">
+                        <img src="{{ url($project->image) }}" alt="{{ $project->title }}">
                     </div>
                     <div class="project-item__hover" data-overlay="dark" data-opacity="9">
                         <a href="{{ route('project.show',[$project->slug]) }}" class="project-item__link"><i
@@ -38,4 +52,5 @@
             @endforelse
         </div>
     </div>
+    <div class="d-flex justify-content-center mt-3">{{ $projects->links() }}</div>
 </div>
