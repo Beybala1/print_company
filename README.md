@@ -1,4 +1,4 @@
-<h2>Laravel admin-dashboard</h2>
+<h2>Print Company</h2>
 
 1.Run git clone <my-cool-project>
     
