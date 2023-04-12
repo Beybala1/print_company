@@ -15,20 +15,21 @@
     <meta name="title" content="@yield('title') | PreBrand" />
     <meta name="description" content="@yield('description')" />
     <title>@yield('title') | PreBrand</title>
-    <link rel="shortcut icon" href="{{url('frontend/assets/images/logo/favicon.png')}}" type="images/x-icon" />
-    <link rel="stylesheet" href="{{url('frontend/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/lightcase.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/meanmenu.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/odometer.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/preloader.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/dropdown.css')}}">
+    <link rel="shortcut icon" href="{{asset('frontend/assets/images/logo/favicon.png')}}" type="images/x-icon" />
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/lightcase.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/meanmenu.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/odometer.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/preloader.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/dropdown.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    
 </head>
 <body id="header">
     <div id="preloader">
@@ -90,7 +91,7 @@
                     <div class="col-xl-10 col-lg-12">
                         <div class="navarea">
                             <a href="{{ route('home') }}" class="site-logo">
-                                <img src="{{url('frontend/assets/images/logo/logo.png')}}" alt="LOGO">
+                                <img src="{{asset('frontend/assets/images/logo/logo.png')}}" alt="LOGO">
                             </a>
                             <div class="mainmenu p-0">
                                 <nav id="mobile-menu">
@@ -98,36 +99,33 @@
                                         <li class="menu_has_children">
                                             <a href="{{ route('home') }}">{{ trans('message.home') }}</a>
                                         </li>
-                                        <li>
-                                            <div class="dropdown">
-                                                <a href="#" class="dropdown-toggle" id="dropdownMenuButton"
-                                                    data-mdb-toggle="dropdown" ria-expanded="false">
-                                                    {{ trans('message.products') }}
-                                                </a>
-                                                <ul class="dropdown-menu dropdwon" aria-labelledby="dropdownMenuButton">
-                                                     @foreach ($categories as $category)
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">
-                                                                {{ $category->title ?? '-' }} 
-                                                                &raquo;
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-submenu">
+
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="#" class="dropdown-toggle"> 
+                                                    {{ trans('message.products') }}</a>
+                                                <ul class="sub-menu">
+                                                    @foreach ($categories as $category)
+
+                                                    <li>
+                                                        <a href="#">
+                                                            {{ $category->title ?? '-' }}
+                                                        </a>
+                                                        <ul class="sub-sub-menu">
+                                                            @foreach($category->products as $product)
                                                                 <li>
-                                                                    @foreach($category->products as $product)
-                                                                    <a 
-                                                                        class="dropdown-item" 
-                                                                        href="{{ route('show',[$product->slug]) }}">
+                                                                    <a href="{{ route('show',$product->slug) }}">
                                                                         {{ $product->title }}
                                                                     </a>
-                                                                     @endforeach
                                                                 </li>
-                                                            </ul>
-                                                        </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
                                                     @endforeach
                                                 </ul>
-                                            </div>
-                                        </li>
-
+                                            </li>
+                                        </ul>
+                                        
                                         <li><a href="{{ route('service') }}">{{ trans('message.service') }}</a></li>
                                         <li><a href="{{ route('project') }}">{{ trans('message.project') }}</a></li>
                                         <li><a href="{{ route('about') }}">{{ trans('message.about') }}</a></li>
@@ -146,7 +144,7 @@
                                 <i class="far fa-globe"></i>
                                 <select onchange="window.location.href = this.value;">
                                     @foreach(config('app.locales') as $lang)
-                                        <option value="{{ LaravelLocalization::getLocalizedURL($lang) }}" @if(app()->getLocale() == $lang) selected @endif>{{ $lang }}</option>
+                                        <option value="{{ LaravelLocalization::getLocalizedasset($lang) }}" @if(app()->getLocale() == $lang) selected @endif>{{ $lang }}</option>
                                     @endforeach 
                                 </select>
                             </div>
@@ -166,7 +164,7 @@
             <div class="row mt-none-50 justify-content-center">
                 <div class="col-xl-2 col-lg-3 mt-50">
                     <a href="{{ route('home') }}" class="footer__logo">
-                        <img src="{{url('frontend/assets/images/logo/logo-white.png')}}" alt="">
+                        <img src="{{asset('frontend/assets/images/logo/logo-white.png')}}" alt="">
                     </a>
                 </div>
                 <div class="col-xl-2 col-lg-4 mt-50 pl-45 pr-0">
@@ -221,29 +219,29 @@
     </footer>
     <!-- footer end -->
     <!--========= JS Here =========-->
-    <script src="{{url('frontend/assets/js/jquery-2.2.4.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.meanmenu.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/counterup.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/lightcase.js')}}"></script>
-    <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/tilt.jquery.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.easing.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/scrollwatch.js')}}"></script>
-    <script src="{{url('frontend/assets/js/sticky-header.js')}}"></script>
-    <script src="{{url('frontend/assets/js/waypoint.js')}}"></script>
-    <script src="{{url('frontend/assets/js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.appear.js')}}"></script>
-    <script src="{{url('frontend/assets/js/odometer.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/wow.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/ajax-form.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/jquery.meanmenu.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/counterup.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/lightcase.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/tilt.jquery.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/scrollwatch.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/sticky-header.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/waypoint.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/jquery.appear.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/odometer.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/ajax-form.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script src="{{url('frontend/assets/js/main.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 </body>
 
 </html>

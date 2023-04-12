@@ -1,32 +1,32 @@
-.dropdown-menu li {
-    position: relative;
-}
-
-.dropdown-menu .dropdown-submenu {
+.menu .sub-menu li .sub-sub-menu {
     display: none;
     position: absolute;
+    top: 0;
     left: 100%;
-    top: -7px;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.dropdown-menu .dropdown-submenu-left {
-    right: 100%;
-    left: auto;
-}
-
-.dropdown-menu>li:hover>.dropdown-submenu {
+.menu .sub-menu li:hover .sub-sub-menu {
     display: block;
 }
 
-.dropdown-hover:hover>.dropdown-menu {
+.menu .sub-menu li>a:before {
+    content: "";
     display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 5px 0;
+    border-color: transparent #000 transparent transparent;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
-.dropdown-hover>.dropdown-toggle:active {
-    /*Without this, clicking will make it sticky*/
-    pointer-events: none;
+.menu .sub-menu li:hover>a:before {
+    border-color: transparent #fff transparent transparent;
 }
-
 .faq-area::after {
     background: #F7F7F7;
     width: 100%;
