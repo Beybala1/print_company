@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -14,41 +15,20 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        // Reset cached roles and permissions
-        /* app()[\Spatie\Permission\PermissionRegistrar::class]
-            ->forgetCachedPermissions();
+        $roleNames = ['publisher', 'editor', 'destroyer'];
 
-        $role = Role::create(['name' => 'admin']);
-        $role->givePermissionTo('create');
-        $role->givePermissionTo('edit');
-        $role->givePermissionTo('destroy'); */
-
-        $roles = [
-            'publisher',
-            'editor',
-            'destroyer',
-            /* 'admin', */
-        ]; 
-
-        $permissions = [
-            'create',
-            'edit',
-            'destroy',
-        ];
-
-        foreach ($roles as $role) {
-            Role::create([
-                'name' => $role,
-                'guard_name' => 'web',
-            ]);
+        foreach ($roleNames as $roleName) {
+            Role::create(['name' => $roleName]);
         }
 
-        foreach ($permissions as $permission) {
-            Permission::create([
-                'name' => $permission,
-                'guard_name' => 'web',
-            ]);
-            
-        }
+        $user = User::create([
+            'name'=>'Admin',
+            'email'=>'admin@gmail.com',
+            'password'=>bcrypt('admin1'),
+            'image'=>'backend/assets/img/avatars/profile.jpg',
+            'role'=>1,
+        ]);
+
+        $user->assignRole($roleNames);
     }
 }

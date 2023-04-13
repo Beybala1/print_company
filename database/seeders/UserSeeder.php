@@ -16,13 +16,6 @@ class UserSeeder extends Seeder
 
         $users = [
             [
-                'name'=>'Admin',
-                'email'=>'admin@gmail.com',
-                'password'=>bcrypt('admin1'),
-                'image'=>'backend/assets/img/avatars/profile.jpg',
-                'role'=>1,
-            ],
-            [
                 'name'=>'Beybala',
                 'email'=>'beybalamuxtarov1@gmail.com',
                 'password'=>bcrypt('admin1'),
