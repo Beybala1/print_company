@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SocialSeeder::class,
             AboutSeeder::class,
+            ServiceSeeder::class,
         ]);        
     }
 }

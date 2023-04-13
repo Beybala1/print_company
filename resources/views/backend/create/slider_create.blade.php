@@ -12,6 +12,11 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Slayder əlavə et</h5>
         </div>
+        <div class="container">
+            <div class="alert alert-warning">
+                Şəkili "jpg" formasında daxil edin
+            </div>
+        </div>
         <div class="card-body">
         <form action="{{ route('slider.store') }}" method="post" enctype="multipart/form-data">
             @csrf

@@ -33,10 +33,10 @@
                 @role('editor')
                     <td>
                         <div class="btn-group">
-                            <form action="{{ route('news.destroy',[$news->id]) }}" method="post">
+                            <form action="{{ route('news.destroy',[$new->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ route('news.edit',[$news->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                <a href="{{ route('news.edit',[$new->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                                 @role('destroyer')
                                 <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 @endrole

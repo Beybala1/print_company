@@ -2,14 +2,14 @@
 
 @section('content')
 @section('title')
-    <title>Əlaqə məlumatları</title>
+<title>Əlaqə məlumatları</title>
 @endsection
-<div class="table-responsive">    
+<div class="table-responsive">
     <h1>Əlaqə məlumatları</h1>
     @role('publisher')
-        <a href="{{ route('contact.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+    <a href="{{ route('contact.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
     @endrole
-      <table id="example" class="table" style="width:100%">
+    <table id="example" class="table" style="width:100%">
         <thead>
             <tr>
                 <th>#</th>
@@ -20,7 +20,7 @@
                 <th>Məkan-2</th>
                 <th>Tarix</th>
                 @role('editor|destroyer')
-                    <th>Əməliyyatlar</th>
+                <th>Əməliyyatlar</th>
                 @endrole
             </tr>
         </thead>
@@ -35,18 +35,22 @@
                 <td>{{ $contact->place_2 }}</td>
                 <td>{{ $contact->created_at }}</td>
                 @role('editor')
-                    <td>
+                <td>
+                    <form action="{{ route('contact.destroy',[$contact->id]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
                         <div class="btn-group">
-                            <form action="{{ route('contact.destroy',[$contact->id]) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                            <a href="{{ route('contact.edit',[$contact->id],'edit') }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                                @role('destroyer')
-                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                @endrole
-                            </form>
+                            <a href="{{ route('contact.edit',[$contact->id],'edit') }}" class="btn btn-success">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            @role('destroyer')
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </div>
-                    </td>
+                        @endrole
+                    </form>
+                </td>
                 @endrole
             </tr>
             @endforeach

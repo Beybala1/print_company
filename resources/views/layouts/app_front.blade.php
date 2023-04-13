@@ -82,7 +82,7 @@
         </div>
     </div>
     <!-- preloader end -->
-
+  
     <!-- header start -->
     <header class="header">
         <div class="header__bottom">
@@ -142,9 +142,9 @@
                         <div class="lang-quote">
                             <div class="language">
                                 <i class="far fa-globe"></i>
-                                <select onchange="window.location.href = this.value;">
+                                <select name="locale" onchange="window.location.href = this.value;">
                                     @foreach(config('app.locales') as $lang)
-                                        <option value="{{ LaravelLocalization::getLocalizedasset($lang) }}" @if(app()->getLocale() == $lang) selected @endif>{{ $lang }}</option>
+                                        <option value="{{ LaravelLocalization::getLocalizedURL($lang) }}" @if(app()->getLocale() == $lang) selected @endif>{{ $lang }}</option>
                                     @endforeach 
                                 </select>
                             </div>
