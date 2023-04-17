@@ -37,3 +37,8 @@
     top: 0px;
     z-index: -1;
 }
+
+.footer__logo{
+    margin-top: 120px;
+    margin-left: -20px;
+}

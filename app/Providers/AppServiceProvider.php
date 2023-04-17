@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         $contact = Contact::first();
         $socials = Social::get();
-        $categories = Category::with('products')->get();
+        $categories = Category::with('products')->latest()->get();
         View::share([
             'categories' => $categories,
             'socials'=>$socials,

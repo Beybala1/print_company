@@ -11,7 +11,7 @@
     <meta property="og:description" content="@yield('description')" />
     <meta property="og:url" content="prebrand.az" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="http://print_company.test/frontend/assets/images/logo/logo.png" />
+    <meta property="og:image" content="http://print_company.test/frontend/assets/images/logo/serfeli-cap.png" />
     <meta name="title" content="@yield('title') | PreBrand" />
     <meta name="description" content="@yield('description')" />
     <title>@yield('title') | PreBrand</title>
@@ -29,8 +29,9 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/dropdown.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-    
+
 </head>
+
 <body id="header">
     <div id="preloader">
         <div id="ctn-preloader" class="ctn-preloader">
@@ -82,7 +83,7 @@
         </div>
     </div>
     <!-- preloader end -->
-  
+
     <!-- header start -->
     <header class="header">
         <div class="header__bottom">
@@ -90,42 +91,34 @@
                 <div class="row">
                     <div class="col-xl-10 col-lg-12">
                         <div class="navarea">
-                            <a href="{{ route('home') }}" class="site-logo">
-                                <img src="{{asset('frontend/assets/images/logo/logo.png')}}" alt="LOGO">
+                            <a href="{{ route('home') }}" class="site-logo mb-3">
+                                <img width="190" height="80"
+                                    src="{{asset('frontend/assets/images/logo/serfeli-cap.png')}}" alt="LOGO">
                             </a>
                             <div class="mainmenu p-0">
                                 <nav id="mobile-menu">
-                                    <ul>
+                                    <ul class="mainMenu">
                                         <li class="menu_has_children">
                                             <a href="{{ route('home') }}">{{ trans('message.home') }}</a>
                                         </li>
 
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="#" class="dropdown-toggle"> 
-                                                    {{ trans('message.products') }}</a>
-                                                <ul class="sub-menu">
-                                                    @foreach ($categories as $category)
-
-                                                    <li>
-                                                        <a href="#">
-                                                            {{ $category->title ?? '-' }}
-                                                        </a>
-                                                        <ul class="sub-sub-menu">
-                                                            @foreach($category->products as $product)
-                                                                <li>
-                                                                    <a href="{{ route('show',$product->slug) }}">
-                                                                        {{ $product->title }}
-                                                                    </a>
-                                                                </li>
-                                                            @endforeach
+                                        <li class="menu_has_children">
+                                            <a href="#">{{ trans('message.products') }}</a>
+                                            <ul class="sub-menu">
+                                                @foreach ($categories as $category)
+                                                <li class=""><a href="#">{{ $category->title ?? '-' }}</a>
+                                                    <div class="subMenuChild">
+                                                        @foreach ($category->products as $product)
+                                                        <ul class=" ">
+                                                            <li><a href="#">{{ $product->title }}</a></li>
                                                         </ul>
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        
+                                                        @endforeach
+                                                    </div>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+
                                         <li><a href="{{ route('service') }}">{{ trans('message.service') }}</a></li>
                                         <li><a href="{{ route('project') }}">{{ trans('message.project') }}</a></li>
                                         <li><a href="{{ route('about') }}">{{ trans('message.about') }}</a></li>
@@ -133,24 +126,28 @@
                                         <li><a href="{{ route('faq') }}">{{ trans('message.faq') }}</a></li>
                                     </ul>
                                 </nav>
+
                             </div>
+
                             <div class="mobile-menu"></div>
                         </div>
+
                     </div>
-                    
+
                     <div class="col-xl-2 col-lg-2 my-auto">
                         <div class="lang-quote">
                             <div class="language">
                                 <i class="far fa-globe"></i>
                                 <select name="locale" onchange="window.location.href = this.value;">
                                     @foreach(config('app.locales') as $lang)
-                                        <option value="{{ LaravelLocalization::getLocalizedURL($lang) }}" @if(app()->getLocale() == $lang) selected @endif>{{ $lang }}</option>
-                                    @endforeach 
+                                    <option value="{{ LaravelLocalization::getLocalizedURL($lang) }}" @if(app()->
+                                        getLocale() == $lang) selected @endif>{{ $lang }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -163,20 +160,33 @@
         <div class="container">
             <div class="row mt-none-50 justify-content-center">
                 <div class="col-xl-2 col-lg-3 mt-50">
-                    <a href="{{ route('home') }}" class="footer__logo">
-                        <img src="{{asset('frontend/assets/images/logo/logo-white.png')}}" alt="">
+                    {{-- <style>
+                        .footer_logo{
+                            margin-top: 120px;
+                            margin-left: -20px;
+                        }
+                    </style> --}}
+                    <a href="{{ route('home') }}" class="footer__logo mt-12">
+                        <img 
+                            src="{{asset('frontend/assets/images/logo/serfeli-cap-white.png')}}" alt="logo">
                     </a>
                 </div>
                 <div class="col-xl-2 col-lg-4 mt-50 pl-45 pr-0">
                     <div class="footer-widget">
                         <h4 class="widget-title">{{ __('message.menu_link') }}</h4>
                         <ul>
-                            <li><a href="{{ route('home') }}"><i class="fa fa-angle-right"></i> {{ trans('message.home') }}</a></li>
-                            <li><a href="{{ route('service') }}"><i class="fa fa-angle-right"></i> {{ trans('message.service') }}</a></li>
-                            <li><a href="{{ route('project') }}"><i class="fa fa-angle-right"></i> {{ trans('message.project') }}</a></li>
-                            <li><a href="{{ route('about') }}"><i class="fa fa-angle-right"></i> {{ trans('message.about') }}</a></li>
-                            <li><a href="{{ route('contact') }}"><i class="fa fa-angle-right"></i> {{ trans('message.contact') }}</a></li>
-                            <li><a href="{{ route('faq') }}"><i class="fa fa-angle-right"></i> {{ trans('message.faq') }}</a></li>
+                            <li><a href="{{ route('home') }}"><i class="fa fa-angle-right"></i>
+                                    {{ trans('message.home') }}</a></li>
+                            <li><a href="{{ route('service') }}"><i class="fa fa-angle-right"></i>
+                                    {{ trans('message.service') }}</a></li>
+                            <li><a href="{{ route('project') }}"><i class="fa fa-angle-right"></i>
+                                    {{ trans('message.project') }}</a></li>
+                            <li><a href="{{ route('about') }}"><i class="fa fa-angle-right"></i>
+                                    {{ trans('message.about') }}</a></li>
+                            <li><a href="{{ route('contact') }}"><i class="fa fa-angle-right"></i>
+                                    {{ trans('message.contact') }}</a></li>
+                            <li><a href="{{ route('faq') }}"><i class="fa fa-angle-right"></i>
+                                    {{ trans('message.faq') }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -186,8 +196,10 @@
                         <div class="recent-news mt-none-20">
                             <div class="recent-news__content mt-20">
                                 <p class="recent-news__title">
-                                    {{ trans('message.email') }}:<a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a><br>
-                                    {{ trans('message.phone') }}:<span> {{ $contact->phone_1 }}, {{ $contact->phone_2 }}</span>
+                                    {{ trans('message.email') }}:<a
+                                        href="mailto:{{ $contact->email }}">{{ $contact->email }}</a><br>
+                                    {{ trans('message.phone') }}:<span> {{ $contact->phone_1 }},
+                                        {{ $contact->phone_2 }}</span>
                                     {{ trans('message.place') }}:<br>{{ $contact->place_1 }}<br>{{ $contact->place_2 }}
                                 </p>
                             </div>
@@ -201,15 +213,15 @@
                 <div class="row">
                     <div class="col-lg-6 my-auto">
                         <div class="copyright-text">
-                                <p>
-                                    {{ trans('message.copyright') }} &copy; 2023
-                                </p>
+                            <p>
+                                {{ trans('message.copyright') }} &copy; 2023
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="social__links">
                             @foreach ($socials as $social)
-                                <a href="{{ $social->link }}"><i class="{{ $social->icon }}"></i></a>
+                            <a href="{{ $social->link }}"><i class="{{ $social->icon }}"></i></a>
                             @endforeach
                         </div>
                     </div>

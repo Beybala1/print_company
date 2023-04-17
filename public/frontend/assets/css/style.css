@@ -1819,6 +1819,24 @@ h6 {
   .header__top {
     padding: 0px 40px;
   }
+  .subMenuChild{
+    position: absolute;
+    left: 242px;
+    width: 215px;
+    background: white;
+    top: 0;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
+  }
+  .subMenuChild{
+    display: none !important;
+  }
+  .sub-menu :hover .subMenuChild{
+    display: block !important;
+    transition: 0.3s;
+  }
+  .lanMobile{
+    display: none !important;
+  }
 }
 @media (max-width: 1300px) {
   .header__top {
@@ -1842,6 +1860,9 @@ h6 {
     border: none;
     flex-direction: column;
     align-items: center;
+  }
+  .lanMobile{
+    display: block;
   }
 }
 .header__info li {
@@ -1869,6 +1890,9 @@ h6 {
 @media (max-width: 450px) {
   .header__info li a {
     padding: 10px 0px;
+  }
+  .lanMobile{
+    display: block;
   }
 }
 .header__info li a i {
@@ -1911,6 +1935,9 @@ h6 {
 @media (max-width: 991px) {
   .header__bottom {
     padding: 16.5px 0px;
+  }
+    .lanMobile{
+    display: block;
   }
 }
 @media (max-width: 1610px) {
@@ -2030,8 +2057,9 @@ h6 {
 }
 .navarea .mean-container .mean-nav a.mean-expand {
   border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
-  height: 37px;
+  height: 27px;
   line-height: 37px;
+  margin-top: 5px;
 }
 @media (max-width: 1199px) {
   .navarea .site-logo {
@@ -2060,13 +2088,13 @@ h6 {
     padding-left: 0px;
   }
 }
-.mainmenu ul {
+.mainMenu {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-.mainmenu ul li {
+.mainmenu .mainMenu li {
   position: relative;
 }
 .dropdwon{
@@ -2079,14 +2107,14 @@ a.dropdown-item{
   display: flex;
 }
 
-.mainmenu ul li a {
+.mainmenu .mainMenu li a {
   font-weight: 500;
   color: #0C2957;
   display: block;
   padding: 32px 25px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1500px) {
-  .mainmenu ul li a {
+  .mainmenu .mainMenu li a {
     padding: 32px 20px;
   }
 }
@@ -2098,7 +2126,7 @@ a.dropdown-item{
   background: #F7F7F7;
   color: #FD4A36;
 }
-.mainmenu ul li .sub-menu {
+.mainmenu .mainMenu li .sub-menu {
   flex-direction: column;
   position: absolute;
   background: #fff;
@@ -2120,7 +2148,7 @@ a.dropdown-item{
     right: 0;
   }
 }
-.mainmenu ul li .sub-menu::after {
+.mainMenu .sub-menu::after {
   background: #0C2957;
   content: "";
   left: 0;
@@ -2130,19 +2158,20 @@ a.dropdown-item{
   position: absolute;
 }
 @media (max-width: 991px) {
-  .mainmenu ul li .sub-menu::after {
+  .mainmenu .mainMenu li .sub-menu::after {
     display: none;
   }
 }
-.mainmenu ul li .sub-menu li a {
+.mainmenu .mainMenu li .sub-menu li a {
   padding: 10px 25px;
   color: #0C2957;
   background: transparent;
+  position: relative;
 }
 .mainmenu ul li .sub-menu li a:hover {
   color: #FD4A36;
 }
-.mainmenu ul li:hover .sub-menu {
+.mainmenu .mainMenu li:hover .sub-menu {
   visibility: visible;
   opacity: 1;
   top: 100%;
@@ -2200,6 +2229,11 @@ a.dropdown-item{
 }
 @media (max-width: 1199px) {
   .lang-quote .language {
+    display: block;
+    margin-top: 15px;
+   
+  }
+  .lang-quote .language i{
     display: none;
   }
 }
@@ -7432,5 +7466,7 @@ input.form-control-sm {
 .footer-widget__2 .recent-news__date {
   color: #A4A6A9;
 }
+
+
 
 /*# sourceMappingURL=style.css.map */
