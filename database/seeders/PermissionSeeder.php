@@ -23,8 +23,8 @@ class PermissionSeeder extends Seeder
 
         $user = User::create([
             'name'=>'Admin',
-            'email'=>'admin@gmail.com',
-            'password'=>bcrypt('admin1'),
+            'email'=>'serfelicap_admin@gmail.com',
+            'password'=>bcrypt('admin'),
             'image'=>'backend/assets/img/avatars/profile.jpg',
             'role'=>1,
         ]);
