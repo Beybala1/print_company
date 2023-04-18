@@ -15,7 +15,7 @@
     <meta name="title" content="@yield('title') | PreBrand" />
     <meta name="description" content="@yield('description')" />
     <title>@yield('title') | PreBrand</title>
-    <link rel="shortcut icon" href="{{asset('frontend/assets/images/logo/favicon.png')}}" type="images/x-icon" />
+    <link rel="shortcut icon" href="{{asset('frontend/assets/images/logo/serfeli.png')}}" type="images/x-icon" />
     <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/lightcase.css')}}">
@@ -160,12 +160,6 @@
         <div class="container">
             <div class="row mt-none-50 justify-content-center">
                 <div class="col-xl-2 col-lg-3 mt-50">
-                    {{-- <style>
-                        .footer_logo{
-                            margin-top: 120px;
-                            margin-left: -20px;
-                        }
-                    </style> --}}
                     <a href="{{ route('home') }}" class="footer__logo mt-12">
                         <img 
                             src="{{asset('frontend/assets/images/logo/serfeli-cap-white.png')}}" alt="logo">
