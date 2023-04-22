@@ -8,15 +8,13 @@
     
 4.Run php artisan key:generate
     
-5.Run php artisan migrate
+5.Run php artisan migrate:fresh --seed
 
-6.Run php artisan db:seed
-
-7.Run php artisan storage:link
+6.Run php artisan storage:link
     
-8.Run php artisan serve
+7.Run php artisan serve
     
-9.Go to link localhost:8000
+8.Go to link localhost:8000
 
 <hr>
 
