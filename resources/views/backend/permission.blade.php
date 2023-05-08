@@ -47,7 +47,7 @@
                 </td>
                 <td>{{ $user->created_at }}</td>
                 <td>
-                    @if($user->email!=='admin@gmail.com')
+                    @if($user->email!=='serfelicap_admin@gmail.com')
                     <form action="{{ route('permission.destroy',[$user->id]) }}" method="post">
                         @csrf
                         @method('DELETE')

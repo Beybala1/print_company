@@ -16,7 +16,7 @@ class StoreProductRequest extends FormRequest
         return [
             'title'=>'required|string|max:255',
             'description_1'=>'required|string',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif',
+            'images.*'=>'required|image|mimes:jpeg,png,jpg,gif',
             'category_id'=>'required',
         ];
     }
@@ -24,8 +24,8 @@ class StoreProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'image.image'=>'Daxil edilən məlumat şəkil formatında deyil',
-            'image.mimes:jpeg,png,jpg,gif'=>'Daxil edilən məlumat jpej,png,və jpg formatında deyil',
+            'images.image'=>'Daxil edilən məlumat şəkil formatında deyil',
+            'images.mimes:jpeg,png,jpg,gif'=>'Daxil edilən məlumat jpej,png,və jpg formatında deyil',
         ];
     }
 }

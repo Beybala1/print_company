@@ -58,7 +58,6 @@ Route::middleware(['isAdmin','auth'])->prefix('admin')->group(function () {
     Route::resource('/sub-product', SubProductAdmincontroller::class)->except(['index','show','destroy','edit'])->names('subProduct');
     Route::resource('/social', SocialAdminController::class)->except(['create','store','show'])->names('social');
     Route::post('/permission-role', [PermissionAdminController::class, 'storeRole'])->name('permission.storeRole');
-    Route::get('/sub-product/create/{id}', [SubProductAdmincontroller::class, 'createSubProduct'])->name('subProduct.create');
     Route::get('/profile', [ProfileAdminController::class, 'index'])->name('profile.index');
     Route::post('/profile', [ProfileAdminController::class, 'updateProfile'])->name('profile.update');
 });

@@ -7,7 +7,7 @@
 <div class="table-responsive">
     <h1>Məhsul cədvəli</h1>
     @role('publisher')
-    <a href="{{ route('product.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
+        <a href="{{ route('product.create') }}" class="btn btn-primary mb-3">Əlavə et</a>
     @endrole
     <table id="example" class="table" style="width:100%">
         <thead>
@@ -23,7 +23,7 @@
                 <th>Mətn-5</th>
                 <th>Tarix</th>
                 @role('editor|destroyer')
-                <th>Əməliyyatlar</th>
+                    <th>Əməliyyatlar</th>
                 @endrole
             </tr>
         </thead>
@@ -31,8 +31,14 @@
             @foreach ($products as $i=>$product)
             <tr>
                 <td>{{ $i+=1}}</td>
-                <td><img style="width: 60px; height:60px;" src="{{ url($product->image) }}"></td>
-                <td>{{ $product->title }}</td>
+                <td>
+                    @if($product->images)
+                        <img style="width: 60px; height:60px;" src="{{ asset('images/'.$product->images->images) }}">
+                    @else
+                        <p>Şəkil yoxdur</p>
+                    @endif
+                </td>
+                <td>{{ $product->title   }}</td>
                 <td>{{ $product->category->title }}</td>
                 <td>{{ mb_substr($product->description_1,0,5) }}</td>
                 <td>{{ mb_substr($product->description_2,0,5) }}</td>

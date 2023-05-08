@@ -31,8 +31,8 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::with('products')->latest()->get();
         View::share([
             'categories' => $categories,
-            'socials'=>$socials,
-            'contact'=>$contact,
+            'socials'=> $socials,
+            'contact'=> $contact,
         ]);
     }
 }

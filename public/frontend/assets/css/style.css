@@ -2132,8 +2132,8 @@ a.dropdown-item{
   background: #fff;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
   z-index: 1;
-  min-width: 240px;
-  padding: 20px 0px;
+  min-width: 110px;
+  padding: 0px 0px;
   top: 110%;
   visibility: hidden;
   opacity: 0;
@@ -2142,12 +2142,12 @@ a.dropdown-item{
   transition: 0.3s;
   z-index: 2;
 }
-@media (max-width: 1199px) {
+/* @media (max-width: 1199px) { */
   .mainmenu ul li .sub-menu {
     text-align: left;
     right: 0;
   }
-}
+
 .mainMenu .sub-menu::after {
   background: #0C2957;
   content: "";
@@ -2157,11 +2157,11 @@ a.dropdown-item{
   height: 5px;
   position: absolute;
 }
-@media (max-width: 991px) {
+/* @media (max-width: 991px) { */
   .mainmenu .mainMenu li .sub-menu::after {
     display: none;
   }
-}
+
 .mainmenu .mainMenu li .sub-menu li a {
   padding: 10px 25px;
   color: #0C2957;

@@ -20,11 +20,11 @@
             @endisset
             <div class="input-group">
                 <input type="file" 
-                    name="image" 
-                    class="form-control @error('image') is-invalid @enderror" 
-                    id="inputGroupFile02" required>
+                    name="images[]"  
+                    class="form-control @error('images') is-invalid @enderror" 
+                    id="inputGroupFile02" required multiple>
                 <label class="input-group-text" for="inputGroupFile02">Yüklə</label>
-                @error('image')
+                @error('images')
                     <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
             </div><br>

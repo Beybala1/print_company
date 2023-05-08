@@ -18,9 +18,12 @@ class ProductController extends Controller
 
     public function show($slug)
     {
-        $products_page = Product::latest()
+        $products_page = Product::with('images')->latest()
             ->paginate(6);
-        $product = Product::where('slug', $slug)
+        foreach ($products_page as $image) {
+            $image->images = $image->images->first();
+        } 
+        $product = Product::with('images')->where('slug', $slug)
             ->firstOrFail();
         return view('frontend.show.product', get_defined_vars());
     }

@@ -20,8 +20,11 @@ class HomeController extends Controller
         $sliders = Slider::latest()->get();
         $services = Service::latest()->get();
         $projects = Project::latest()->paginate(6);
-        $products_page = Product::latest()
+        $products_page = Product::with('images')->latest()
             ->paginate(6);
+        foreach ($products_page as $product) {
+            $product->images = $product->images->first();
+        } 
         $faqs = Faq::latest()->get();
         $news = News::latest()->paginate(6);
         $about = About::first();

@@ -101,7 +101,6 @@
                                         <li class="menu_has_children">
                                             <a href="{{ route('home') }}">{{ trans('message.home') }}</a>
                                         </li>
-
                                         <li class="menu_has_children">
                                             <a href="#">{{ trans('message.products') }}</a>
                                             <ul class="sub-menu">
@@ -109,8 +108,8 @@
                                                 <li class=""><a href="#">{{ $category->title ?? '-' }}</a>
                                                     <div class="subMenuChild">
                                                         @foreach ($category->products as $product)
-                                                        <ul class=" ">
-                                                            <li><a href="#">{{ $product->title }}</a></li>
+                                                        <ul>
+                                                            <li><a href="{{ route('show',$product->slug) }}">{{ $product->title }}</a></li>
                                                         </ul>
                                                         @endforeach
                                                     </div>
@@ -126,12 +125,9 @@
                                         <li><a href="{{ route('faq') }}">{{ trans('message.faq') }}</a></li>
                                     </ul>
                                 </nav>
-
                             </div>
-
                             <div class="mobile-menu"></div>
                         </div>
-
                     </div>
 
                     <div class="col-xl-2 col-lg-2 my-auto">

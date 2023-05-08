@@ -23,7 +23,6 @@ return new class extends Migration
             $table->longText('description_3')->nullable();
             $table->longText('description_4')->nullable();
             $table->longText('description_5')->nullable();
-            $table->string('image');
             $table->string('slug');
             $table->timestamps();
         });

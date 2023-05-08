@@ -7,11 +7,11 @@
             <div class="col-xl-8 text-center">
                 <div class="section-header mb-65">
                     <h4 class="sub-heading sub-heading__2 mb-15">
-                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-3.png') }}" class="mr-5"
-                                alt="image"></span>
+                        <span><img src="{{ asset('frontend/assets/imagess/shape/heading-shape-3.png') }}" class="mr-5"
+                                alt="images"></span>
                         {{ trans('message.products') }}
-                        <span><img src="{{ url('frontend/assets/images/shape/heading-shape-4.png') }}" class=" ml-5"
-                                alt="image"></span>
+                        <span><img src="{{ asset('frontend/assets/imagess/shape/heading-shape-4.png') }}" class=" ml-5"
+                                alt="images"></span>
                     </h4>
                     <h2 class="section-title section-title__2">{{ trans('message.our_products') }}</h2>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 d-flex mt-30">
                     <div class="project-item">
                         <div class="project-item__thumb project-item__thumb--big">
-                            <img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+                            <img src="{{ asset('images/'.$product->images->images) }}" alt="{{ $product->title }}">
                         </div>
                         <div class="project-item__hover" data-overlay="dark" data-opacity="9">
                             <a href="{{ route('show',$product->slug) }}" class="project-item__link">
