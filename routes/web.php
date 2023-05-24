@@ -23,6 +23,7 @@ use App\Http\Controllers\admin\SubProductAdmincontroller;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileAdminController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -37,6 +38,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
     Route::post('/contact',[ContactController::class, 'store'])->name('message');
     Route::get('/faq',[FaqController::class, 'index'])->name('faq');
     Route::get('/product',[ProductController::class, 'index'])->name('product');
+    Route::get('/product-all',[ProductController::class, 'productAll'])->name('productAll');
     Route::get('/product/{slug}',[ProductController::class, 'show'])
         ->name('show');
     Route::get('/news/{slug}',[NewsController::class, 'show'])->name('news.show');
@@ -60,6 +62,11 @@ Route::middleware(['isAdmin','auth'])->prefix('admin')->group(function () {
     Route::post('/permission-role', [PermissionAdminController::class, 'storeRole'])->name('permission.storeRole');
     Route::get('/profile', [ProfileAdminController::class, 'index'])->name('profile.index');
     Route::post('/profile', [ProfileAdminController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('/clear', function () {
+        Artisan::call('optimize:clear');
+        dd("Cache cleared");
+    });
 });
 
 Auth::routes();

@@ -3,6 +3,22 @@
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
+if (!function_exists('upload')) {
+    function upload($path, $file)
+    {
+        try {
+            $img = $file;
+            $extension = $img->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $img->move('images/' . $path, $filename);
+            $data['image'] = 'images/' . $path . '/' . $filename;
+            return $data['image'];
+        } catch (Exception $e) {
+            return redirect()->back();
+        }
+    }
+}
+
 if (!function_exists('multi_upload')) {
     function multi_upload($path, $files)
     {
@@ -22,7 +38,7 @@ if (!function_exists('multi_upload')) {
 
 function admin_abort()
 {
-    abort_if(auth()->user()->email !== 'serfelicap_admin@gmail.com', 403);
+    abort_if(auth()->user()->email !== 'serfelicap@gmail.com', 403);
 }
 
 function publisher_abort()

@@ -10,37 +10,25 @@ use Illuminate\Support\Facades\File;
 
 class SliderAdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {   
         $sliders = Slider::latest()->get();
         return view('backend.slider',get_defined_vars());
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
         publisher_abort();
         return view('backend.create.slider_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreSliderRequest $request)
     {
         try {
-            $request->validated();
-            $file = time().'.'.$request->image->extension();
-            $request->image->storeAS('public/uploads/images/',$file);
-            $image = 'storage/uploads/images/'.$file;
             Slider::create([
                 'title'=>$request->title,
                 'description'=>$request->description,
-                'image'=>$image,
+                'image'=>upload('sliders', $request->file('image'))
             ]);
             return redirect(route('slider.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
         } catch (\Exception $e) {
@@ -48,17 +36,11 @@ class SliderAdminController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         editor_abort();
@@ -70,37 +52,25 @@ class SliderAdminController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
         try {
-            $request->validated();
             if ($request->hasFile('image')) {
-                $file = time().'.'.$request->image->extension();
-                $request->image->storeAS('public/uploads/images/',$file);
-                $image = 'storage/uploads/images/'.$file;
-                File::delete($slider->image);
+                $imagePath = public_path($slider->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+                $slider->image = upload('sliders', $request->file('image'));
             }
-            else{
-                $image = $slider->image;
-            }
-            $slider->update([
-                'title'=>$request->title,
-                'description'=>$request->description,
-                'image'=>$image,
-            ]);
-           
+            $slider->title = $request->title;
+            $slider->description = $request->description;
+            $slider->save();
             return redirect(route('slider.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
         } catch (\Exception $e) {
             return back()->with('errors', 'Əməliyyat uğursuz oldu');
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         destroyer_abort();

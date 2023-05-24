@@ -1,20 +1,19 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <meta property="og:site_name" content="Prebrand" />
-    <meta property="og:title" content="@yield('title') | PreBrand" />
+    <meta property="og:site_name" content="Sərfəli Çap" />
+    <meta property="og:title" content="@yield('title') | Sərfəli Çap" />
     <meta property="og:description" content="@yield('description')" />
-    <meta property="og:url" content="prebrand.az" />
+    <meta property="og:url" content="Sərfəli Çap.az" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="http://print_company.test/frontend/assets/images/logo/serfeli-cap.png" />
-    <meta name="title" content="@yield('title') | PreBrand" />
+    <meta name="title" content="@yield('title') | Sərfəli Çap" />
     <meta name="description" content="@yield('description')" />
-    <title>@yield('title') | PreBrand</title>
+    <title>@yield('title') | Sərfəli Çap</title>
     <link rel="shortcut icon" href="{{asset('frontend/assets/images/logo/serfeli.png')}}" type="images/x-icon" />
     <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/font-awesome.min.css')}}">
@@ -102,7 +101,7 @@
                                             <a href="{{ route('home') }}">{{ trans('message.home') }}</a>
                                         </li>
                                         <li class="menu_has_children">
-                                            <a href="#">{{ trans('message.products') }}</a>
+                                            <a href="{{ route('productAll') }}">{{ trans('message.products') }}</a>
                                             <ul class="sub-menu">
                                                 @foreach ($categories as $category)
                                                 <li class=""><a href="#">{{ $category->title ?? '-' }}</a>

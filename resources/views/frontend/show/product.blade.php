@@ -30,8 +30,13 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="project-thumb d-flex align-self-stretch">
-                    <img width="100%" style="height:500px;" src="{{ asset('images/'.$product->images->first()->images) }}" 
-                        alt="{{ $product->title }}">
+                    {{-- <img width="100%" style="height:500px;" src="{{ asset('images/'.$product->images->first()->images) }}" 
+                        alt="{{ $product->title }}"> --}}
+                        
+                        @foreach ($product->images as $img)
+                            <img width="100%" style="height:500px;" src="{{ asset('images/'.$img->images) }}" 
+                                alt="{{ $product->title }}">
+                        @endforeach
                 </div>
             </div>
             <div class="col-xl-4">
@@ -53,7 +58,7 @@
                     </p>
                     <br>
                     <h2>{{ trans('message.other_products') }}</h2>
-                    <div class="row mt-10">
+                    {{-- <div class="row mt-10">
                         @foreach ($products_page as $product)
                             <div class="col-xl-6 col-lg-6 col-md-6 d-flex mt-30">
                                 <div class="project-item">
@@ -72,7 +77,7 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

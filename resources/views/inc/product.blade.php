@@ -20,11 +20,14 @@
     </div>
     <div class="container-fluid">
         <div class="row project-row mt-none-30">
-            @foreach ($products_page as $product)
+            @foreach ($products as $product)
                 <div class="col-xl-4 col-lg-6 col-md-6 d-flex mt-30">
                     <div class="project-item">
                         <div class="project-item__thumb project-item__thumb--big">
-                            <img src="{{ asset('images/'.$product->images->images) }}" alt="{{ $product->title }}">
+                            @foreach ($product->images as $img)
+                                <img src="{{ asset('images/'.$img->images) }}" alt="{{ $product->title }}">
+                                @break
+                            @endforeach
                         </div>
                         <div class="project-item__hover" data-overlay="dark" data-opacity="9">
                             <a href="{{ route('show',$product->slug) }}" class="project-item__link">
@@ -41,7 +44,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mt-3">
-        {{ $products_page->links() }}
+        {{ $productsList->links() }}
     </div>
 </div>
 
