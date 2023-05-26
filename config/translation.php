@@ -35,7 +35,7 @@ return [
     | when finding missing translations.
     |
     */
-    'translation_methods' => ['trans', '__'],
+    'translation_methods' => ['trans', '__', '@lang'],
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     | Define the URL used to access the language management too.
     |
     */
-    'ui_url' => 'languages',
+    'ui_url' => 'admin/dil',
 
     /*
     |--------------------------------------------------------------------------

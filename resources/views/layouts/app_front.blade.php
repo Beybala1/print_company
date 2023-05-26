@@ -116,10 +116,8 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-
-                                        <li><a href="{{ route('service') }}">{{ trans('message.service') }}</a></li>
-                                        <li><a href="{{ route('project') }}">{{ trans('message.project') }}</a></li>
-                                        <li><a href="{{ route('about') }}">{{ trans('message.about') }}</a></li>
+                                        <li><a href="{{ route('contact') }}">{{ trans('message.printingHouse') }}</a></li>
+                                        <li><a href="{{ route('contact') }}">{{ trans('message.contact') }}</a></li>
                                         <li><a href="{{ route('contact') }}">{{ trans('message.contact') }}</a></li>
                                         <li><a href="{{ route('faq') }}">{{ trans('message.faq') }}</a></li>
                                     </ul>

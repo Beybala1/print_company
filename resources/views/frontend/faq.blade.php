@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="text-center">Məzmun yoxdur/p>
+                        <p class="text-center">Məzmun yoxdur</p>
                     @endforelse
                 </div>
             </div>

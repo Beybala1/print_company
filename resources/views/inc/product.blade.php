@@ -7,10 +7,10 @@
             <div class="col-xl-8 text-center">
                 <div class="section-header mb-65">
                     <h4 class="sub-heading sub-heading__2 mb-15">
-                        <span><img src="{{ asset('frontend/assets/imagess/shape/heading-shape-3.png') }}" class="mr-5"
+                        <span><img src="{{ asset('frontend/assets/images/shape/heading-shape-3.png') }}" class="mr-5"
                                 alt="images"></span>
                         {{ trans('message.products') }}
-                        <span><img src="{{ asset('frontend/assets/imagess/shape/heading-shape-4.png') }}" class=" ml-5"
+                        <span><img src="{{ asset('frontend/assets/images/shape/heading-shape-4.png') }}" class=" ml-5"
                                 alt="images"></span>
                     </h4>
                     <h2 class="section-title section-title__2">{{ trans('message.our_products') }}</h2>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mt-3">
-        {{ $productsList->links() }}
+        {{ $products->links() }}
     </div>
 </div>
 

@@ -7177,6 +7177,13 @@ input.form-control-sm {
   color: #fff;
 }
 
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+  align-items: start;
+}
+
 .project-thumb {
   height: 100%;
 }

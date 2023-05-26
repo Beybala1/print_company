@@ -1,4 +1,4 @@
-@section('title')
+{{-- @section('title')
     {{ trans('message.project') }}
 @endsection
 
@@ -54,3 +54,4 @@
     </div>
     <div class="d-flex justify-content-center mt-3">{{ $projects->links() }}</div>
 </div>
+ --}}

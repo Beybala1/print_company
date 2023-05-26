@@ -1,4 +1,4 @@
-@section('title')
+{{-- @section('title')
     {{ trans('message.service') }}
 @endsection
 
@@ -38,4 +38,4 @@
             @endforelse
         </div>
     </div>
-</section>
+</section> --}}

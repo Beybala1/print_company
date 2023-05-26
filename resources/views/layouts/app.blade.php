@@ -60,28 +60,28 @@
                 <ul class="menu-inner py-1">
                     <li class="menu-item {{ request()->routeIs(['dashboard']) ? 'menu active' : ''}}">
                         <a href="{{ route('dashboard') }}" class="menu-link">
-                            <i class="bi bi-bar-chart"></i>
+                            <i class="bi bi-bar-chart-fill"></i>
                             <div data-i18n="İdarə paneli" class="mx-3">İdarə paneli</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                            <div data-i18n="Şirkət məlumatları">Şirkət məlumatları</div>
+                            <i class="fa fa-home"></i>
+                            <div style="margin-left:7px;" data-i18n="Şirkət məlumatları">Şirkət məlumatları</div>
                         </a>
                         <ul class="menu-sub">
                             <li
                                 class="menu-item  {{ request()->routeIs(['about.index','about.create','about.edit']) ? 'menu active' : ''}}">
                                 <a href="{{ route('about.index') }}" class="menu-link">
-                                    <i class="bi bi-building"></i>
+                                    <i class="bi bi-building-fill"></i>
                                     <div data-i18n="Haqqımızda" class="mx-3">Haqqımızda</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ request()->routeIs(['contact.index','contact.create','contact.edit']) ? 'menu active' : ''}}">
                                 <a href="{{ route('contact.index') }}" class="menu-link">
-                                    <i class="bi bi-telephone"></i>
+                                    <i class="bi bi-telephone-fill"></i>
                                     <div class="mx-3">Əlaqə məlumatları</div>
                                 </a>
                             </li>
@@ -97,14 +97,14 @@
                     <li
                         class="menu-item {{ request()->routeIs(['slider.index','slider.create','slider.edit']) ? 'menu active' : ''}}">
                         <a href="{{ route('slider.index') }}" class="menu-link">
-                            <i class="bi bi-sliders2-vertical"></i>
+                            <i class="fa fa-sliders"></i>
                             <div data-i18n="Slayder" class="mx-3">Slayder</div>
                         </a>
                     </li>
                     <li
                         class="menu-item {{ request()->routeIs(['service.index','service.create','service.edit']) ? 'menu active' : ''}}">
                         <a href="{{ route('service.index') }}" class="menu-link">
-                            <i class="bi bi-brightness-high"></i>
+                            <i class="fa fa-wrench"></i>
                             <div data-i18n="Servis" class="mx-3">Servis</div>
                         </a>
                     </li>
@@ -118,7 +118,7 @@
                     <li
                         class="menu-item {{ request()->routeIs(['category.index','category.create','category.edit']) ? 'menu active' : ''}}">
                         <a href="{{ route('category.index') }}" class="menu-link">
-                            <i class="bi bi-tag"></i>
+                            <i class="fa fa-bars"></i>
                             <div data-i18n="Kategoriyalar" class="mx-3">Kategoriyalar</div>
                         </a>
                     </li>
@@ -133,21 +133,21 @@
                     <li
                         class="menu-item {{ request()->routeIs(['message.index','message.create','message.edit']) ? 'menu active' : ''}}">
                         <a href="{{ route('message.index') }}" class="menu-link">
-                            <i class="bi bi-envelope"></i>
+                            <i class="bi bi-envelope-fill"></i>
                             <div data-i18n="Mesajlar" class="mx-3">Mesajlar</div>
                         </a>
                     </li>
                     <li
                         class="menu-item {{ request()->routeIs(['faq.index','faq.create','faq.edit']) ? 'menu active' : ''}}">
                         <a href="{{ route('faq.index') }}" class="menu-link">
-                            <i class="bi bi-question circle"></i>
+                            <i class="fa fa-question-circle"></i>
                             <div data-i18n="FAQ" class="mx-3">FAQ</div>
                         </a>
                     </li>
                     <li
                         class="menu-item {{ request()->routeIs(['news.index','news.create','news.edit']) ? 'menu active' : ''}}">
                         <a href="{{ route('news.index') }}" class="menu-link">
-                            <i class="bi bi-newspaper"></i>
+                            <i class="fa fa-file-text"></i>
                             <div class="mx-3">Xəbərlər</div>
                         </a>
                     </li>
@@ -155,9 +155,9 @@
                     <li
                         class="menu-item {{ request()->routeIs(['permission.index','permission.create','permission.show','permission.store','permission.storeRole']) ? 'menu active' : ''}}">
                         <a href="{{ route('permission.index') }}" class="menu-link">
-                            <i class="bi bi-person-gear"></i>
-                            <div class="mx-3">İstifadəçilər və icazələr</div>
-                        </a>
+                            <i class="bi bi-person-gear"çilər və icazələr</div>
+                        </a>></i>
+                            <div class="mx-3">İstifadə
                     </li>
                     @endif
                     <!-- Dashboards -->
@@ -169,7 +169,7 @@
                 <!-- Navbar -->
                 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                     id="layout-navbar">
-                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none ">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                             <i class="bx bx-menu bx-sm"></i>
                         </a>
