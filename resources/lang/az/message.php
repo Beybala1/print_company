@@ -37,4 +37,8 @@ return [
     'project_name'=>'Proyekt',
     'project_description'=>'Məzmun',
     'other_news'=>'Digər xəbələr',
+    'printingHouse'=>'Mətbəə',
+    'advertising'=>'Reklam',
+    'printingPrducts'=>'Mətbəə məhsullarımız',
+    'advertisingProducts'=>'Reklam məhsullarımız',
 ];

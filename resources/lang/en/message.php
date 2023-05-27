@@ -37,4 +37,8 @@ return [
     'project_name'=>'Project',
     'project_description'=>'Description',
     'other_news'=>'Other news',
+    'printingHouse'=>'Printing house',
+    'advertising'=>'Advertising',
+    'printingPrducts'=>'Printing products',
+    'advertisingProducts'=>'Advertising products',
 ];

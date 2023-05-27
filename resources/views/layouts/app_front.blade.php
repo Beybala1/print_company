@@ -116,8 +116,8 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route('contact') }}">{{ trans('message.printingHouse') }}</a></li>
-                                        <li><a href="{{ route('contact') }}">{{ trans('message.contact') }}</a></li>
+                                        <li><a href="{{ route('printingHouse') }}">{{ trans('message.printingHouse') }}</a></li>
+                                        <li><a href="{{ route('advertising') }}">{{ trans('message.advertising') }}</a></li>
                                         <li><a href="{{ route('contact') }}">{{ trans('message.contact') }}</a></li>
                                         <li><a href="{{ route('faq') }}">{{ trans('message.faq') }}</a></li>
                                     </ul>

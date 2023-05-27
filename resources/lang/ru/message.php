@@ -37,4 +37,8 @@ return [
     'project_name'=>'Проекты',
     'project_description'=>'Описание',
     'other_news'=>'Другие новости',
+    'printingHouse'=>'Типография',
+    'advertising'=>'Реклама',
+    'printingPrducts'=>'Типография Продукты',
+    'advertisingProducts'=>'Реклама Продукты',
 ];
