@@ -34,21 +34,12 @@ class AboutAdminController extends Controller
     public function store(StoreAboutRequest $request)
     {
         try {
-            if ($request->hasFile('image')) {
-                $file = time().'.'.$request->image->extension();
-                $request->image->storeAS('public/uploads/images/',$file);
-                $image = 'storage/uploads/images/'.$file;
-            }
-            else{
-                $image='NULL';
-            }
             About::create([
                 'title'=>$request->title,
                 'description'=>$request->description,
-                'image'=>$image,
+                'image'=>upload('about', $request->file('image'))
             ]);
-            
-            return redirect(route('about.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
+            return redirect(route('slider.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
         } catch (\Exception $e) {
             return back()->with('errors', 'Əməliyyat uğursuz oldu');
         }

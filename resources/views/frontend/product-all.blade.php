@@ -1,23 +1,10 @@
+@extends('layouts.app_front')
+@section('content')
+
 @section('title')
     {{ trans('message.products') }}
 @endsection
-<div style="margin-top:3%;"class="project-area project-area__2 pt-125">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-8 text-center">
-                <div class="section-header mb-65">
-                    <h4 class="sub-heading sub-heading__2 mb-15">
-                        <span><img src="{{ asset('frontend/assets/images/shape/heading-shape-3.png') }}" class="mr-5"
-                                alt="images"></span>
-                        {{ trans('message.products') }}
-                        <span><img src="{{ asset('frontend/assets/images/shape/heading-shape-4.png') }}" class=" ml-5"
-                                alt="images"></span>
-                    </h4>
-                    <h2 class="section-title section-title__2">{{ trans('message.our_products') }}</h2>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="project-area project-area__2 pt-125">
     <div class="container-fluid">
         <div class="row project-row mt-none-30">
             @foreach ($products as $product)
@@ -47,5 +34,6 @@
         {{ $products->links() }}
     </div>
 </div>
+@endsection
 
 

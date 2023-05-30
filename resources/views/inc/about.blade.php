@@ -1,4 +1,4 @@
-@section('title')
+{{-- @section('title')
     {{ trans('message.about') }}
 @endsection
 
@@ -28,3 +28,4 @@
     </div>
 </section>
 
+ --}}

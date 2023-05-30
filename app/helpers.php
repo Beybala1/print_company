@@ -36,11 +36,6 @@ if (!function_exists('multi_upload')) {
     }
 }
 
-function admin_abort()
-{
-    abort_if(auth()->user()->email !== 'serfelicap@gmail.com', 403);
-}
-
 function publisher_abort()
 {
     if (Gate::denies('publisher')) {

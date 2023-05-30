@@ -151,15 +151,15 @@
                             <div class="mx-3">Xəbərlər</div>
                         </a>
                     </li>
-                    @if (auth()->user()->email==='serfelicap_admin@gmail.com')
-                    <li
-                        class="menu-item {{ request()->routeIs(['permission.index','permission.create','permission.show','permission.store','permission.storeRole']) ? 'menu active' : ''}}">
-                        <a href="{{ route('permission.index') }}" class="menu-link">
-                            <i class="bi bi-person-gear"çilər və icazələr</div>
-                        </a>></i>
-                            <div class="mx-3">İstifadə
-                    </li>
-                    @endif
+                    @role('admin')
+                        <li
+                            class="menu-item {{ request()->routeIs(['permission.index','permission.create','permission.show','permission.store','permission.storeRole']) ? 'menu active' : ''}}">
+                            <a href="{{ route('permission.index') }}" class="menu-link">
+                                <i class="fas fa-user-cog"></i>
+                                <div class="mx-3">İstifadəçilər və icazələr</div>
+                            </a>
+                        </li>
+                    @endrole
                     <!-- Dashboards -->
                 </ul>
             </aside>

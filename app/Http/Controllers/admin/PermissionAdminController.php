@@ -14,20 +14,20 @@ class PermissionAdminController extends Controller
     public function index()
     {   
         //Helper(app/helpers.php)
-        admin_abort();
+        ;
         $users = User::get();
         return view('backend.permission', get_defined_vars());
     }
 
     public function create()
     {
-        admin_abort();
+        ;
         return view('backend.create.permission_create');
     }
 
     public function show($id)
     {
-        admin_abort();
+        ;
         $user = User::findOrFail($id);
         return view('backend.show.permission', get_defined_vars());
     }
@@ -51,7 +51,7 @@ class PermissionAdminController extends Controller
 
     public function destroy($id)
     {
-        admin_abort();
+        ;
         User::findOrFail($id)->delete();
         return back()
             ->with('success', 'Əməliyyat uğurla həyata keçirildi');

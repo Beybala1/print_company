@@ -41,4 +41,5 @@ return [
     'advertising'=>'Advertising',
     'printingPrducts'=>'Printing products',
     'advertisingProducts'=>'Advertising products',
+    'subscribe'=>'Subscribe to stay updated',
 ];

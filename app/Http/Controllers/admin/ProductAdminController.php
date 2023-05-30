@@ -65,7 +65,8 @@ class ProductAdminController extends Controller
     public function edit(string $id)
     {
         try {
-            $product_edit = Product::findOrFail($id);
+            $categories = Category::latest()->get();
+            $product_edit = Product::with('category')->findOrFail($id);
             return view('backend.update.product_update', get_defined_vars());
         } catch (\Exception $e) {
             return back()->with('errors', 'Əməliyyat uğursuz oldu');
@@ -91,6 +92,7 @@ class ProductAdminController extends Controller
             }
             $product->update([  
                 'title' => $request->title,
+                'category_id' => $request->category_id,
                 'description_1' => $request->description_1,
                 'description_2' => $request->description_2,
                 'description_3' => $request->description_3,

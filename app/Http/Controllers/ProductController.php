@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function productAll()
     {
         $products = Product::latest()->paginate(6);
-        return view('frontend.product',get_defined_vars());
+        return view('frontend.product-all',get_defined_vars());
     }
 
     public function show($slug)

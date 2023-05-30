@@ -19,7 +19,7 @@ return [
     'brand_your_design'=>'Нужен дизайн для вашего бренда?',
     'common_questions'=>'Часто задаваемые вопросы',
     'email'=>'Email',
-    'phone'=>'телефон',
+    'phone'=>'Tелефон',
     'place'=>'Расположение',
     'copyright'=>'Авторские права защищены',
     'message'=>'Отправить сообщениеa',
@@ -41,4 +41,5 @@ return [
     'advertising'=>'Реклама',
     'printingPrducts'=>'Типография Продукты',
     'advertisingProducts'=>'Реклама Продукты',
+    'subscribe'=>'Подпишитесь, чтобы быть в курсе',
 ];

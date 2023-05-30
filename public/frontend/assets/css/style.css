@@ -1163,9 +1163,9 @@ p, li, span {
   padding-top: 120px;
 }
 
-.pt-125 {
-  padding-top: 125px;
-}
+/* .pt-125 {
+  /* padding-top: 125px; */
+} */
 
 .pt-130 {
   padding-top: 130px;
@@ -3382,25 +3382,24 @@ input.form-control-sm {
 @media (max-width: 1610px) {
   .project-area__2 {
     padding: 0px 80px;
-    padding-top: 125px;
   }
 }
 @media (max-width: 1560px) {
   .project-area__2 {
     padding: 0px 30px;
-    padding-top: 125px;
+    /* padding-top: 125px; */
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1500px) {
   .project-area__2 {
     padding: 0px 0px;
-    padding-top: 125px;
+    /* padding-top: 125px; */
   }
 }
 @media (max-width: 991px) {
   .project-area__2 {
     padding: 0px 0px;
-    padding-top: 125px;
+    /* padding-top: 125px; */
   }
 }
 

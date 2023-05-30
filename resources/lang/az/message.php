@@ -41,4 +41,5 @@ return [
     'advertising'=>'Reklam',
     'printingPrducts'=>'Mətbəə məhsullarımız',
     'advertisingProducts'=>'Reklam məhsullarımız',
+    'subscribe'=>'Yeniliklərdən xəbərdar olmaq üçün abunə ol',
 ];
