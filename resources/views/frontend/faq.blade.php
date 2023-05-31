@@ -4,7 +4,7 @@
 @section('title')
     {{ trans('message.faq') }}
 @endsection
-<section class="faq-area faq-area__2 pt-80 pb-80">
+<section class="faq-area faq-area__2 pb-80">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 text-center">

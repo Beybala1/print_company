@@ -7473,6 +7473,22 @@ input.form-control-sm {
   color: #A4A6A9;
 }
 
+.subMenuChild {
+  width: max-content;
+  min-width: 150px;
+  max-width: 450px;
+  position: absolute;
+  left: 100%;
+}
+.subMenuChild a {
+  text-align: center;
+}
+
+
+.subMenuChild ul {
+  padding-left: 0 !important;
+}
+
 
 
 /*# sourceMappingURL=style.css.map */

@@ -63,6 +63,5 @@
     </div>
 </section>
 <!-- gta section end -->
-
 <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3037.6435705168133!2d49.828870815395874!3d40.41674617936515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDI1JzAwLjMiTiA0OcKwNDknNTEuOCJF!5e0!3m2!1sen!2saz!4v1678168113307!5m2!1sen!2saz" width="1310" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 @endsection
