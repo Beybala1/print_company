@@ -34,18 +34,14 @@ class NewsAdminController extends Controller
     public function store(StoreNewsRequest $request)
     {
         try {
-            $request->validated();
-            $file = time().'.'.$request->image->extension();
-            $request->image->storeAS('public/uploads/images/',$file);
-            $image = 'storage/uploads/images/'.$file;
             News::create([
                 'title'=>$request->title,
                 'description'=>$request->description,
-                'image'=>$image,
+                'image'=>upload('news', $request->file('image'))
             ]);
             return redirect(route('news.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
         } catch (\Exception $e) {
-            return back()->with('warning', 'Əməliyyat uğursuz oldu');
+            return back()->with('errors', 'Əməliyyat uğursuz oldu');
         }
     }
 
@@ -76,21 +72,16 @@ class NewsAdminController extends Controller
     public function update(UpdateNewsRequest $request, News $news)
     {
         try {
-            $request->validated();
             if ($request->hasFile('image')) {
-                $file = time().'.'.$request->image->extension();
-                $request->image->storeAS('public/uploads/images/',$file);
-                $image = 'storage/uploads/images/'.$file;
-                File::delete($news->image);
+                $imagePath = public_path($news->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+                $news->image = upload('newss', $request->file('image'));
             }
-            else{
-                $image = $news->image;
-            }
-            $news->update([
-                'title'=>$request->title,
-                'description'=>$request->description,
-                'image'=>$image,
-            ]);
+            $news->title = $request->title;
+            $news->description = $request->description;
+            $news->save();
            
             return redirect(route('news.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');
         } catch (\Exception $e) {
@@ -105,6 +96,7 @@ class NewsAdminController extends Controller
     {
         destroyer_abort();
         try {
+            $news = news::find($news);
             File::delete($news->image);
             $news->delete();
             return redirect(route('news.index'))->with('success', 'Əməliyyat uğurla həyata keçirildi');

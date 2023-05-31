@@ -4,7 +4,7 @@
 @section('title')
     {{ trans('message.advertisingProducts') }}
 @endsection
-<div class="project-area project-area__2 pt-125 mb-3">
+<div class="project-area project-area__2 mb-3">
     <div class="container-fluid">
         <div class="row project-row mt-none-30">
             @foreach ($products as $product)
