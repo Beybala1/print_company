@@ -9,11 +9,6 @@
 <!-- news area start -->
 <div class="blog__area blog__area--2 pt-125 pb-125 pt-3">
     <div class="container">
-        <div class="col-xl-12 text-center">
-            <div class="section-header mb-65">
-                <h2 class="section-title section-title__2">{{ trans('message.news') }}</h2>
-            </div>
-        </div>
         <div class="row">
             <div class="col-xl-8 col-lg-12">
                 <article class="blog__box blog__box--3 blog__box--details">
